@@ -1,38 +1,38 @@
 import re
 def verificar_senha(senha):
-    tamanho = len(senha) >= 8
-    minuscula = re.search(r"[a-z]", senha)
-    maiuscula = re.search(r"[A-Z]", senha)
-    numero = re.search(r"[0-9]", senha)
-    simbolo = re.search(r"[!@#$%^&*(),.?\":{}|<>]", senha)
+tamanho = len(senha) >= 8
+ minuscula = re.search(r"[a-z]", senha)
+ maiuscula = re.search(r"[A-Z]", senha)
+numero = re.search(r"[0-9]", senha)
+simbolo = re.search(r"[!@#$%^&*(),.?\":{}|<>]", senha)
 
-    pontuacao = sum([tamanho, bool(minuscula), bool(maiuscula), bool(numero), bool(simbolo)])
-    if pontuacao == 5:
-        status = "Forte 💪"
-    elif pontuacao >= 3:
-        status = "Média ⚠️"
-    else:
-        status = "Fraca ❌"
+pontuacao = sum([tamanho, bool(minuscula), bool(maiuscula), bool(numero), bool(simbolo)])
+if pontuacao == 5:
+status = "Forte "
+elif pontuacao >= 3:
+status = "Média "
+else:
+status = "Fraca "
     
-    print(f"Senha: {senha}")
-    print(f"Força: {status}")
-    print("Sugestões para melhorar:")
+ print(f"Senha: {senha}")
+ print(f"Força: {status}")
+ print("Sugestões para melhorar:")
 
-    if not tamanho:
+ if not tamanho:
         print("- Use pelo menos 8 caracteres")
-    if not minuscula:
+if not minuscula:
         print("- Adicione letras minúsculas")
-    if not maiuscula:
+ if not maiuscula:
         print("- Adicione letras maiúsculas")
-    if not numero:
+ if not numero:
         print("- Adicione números")
-    if not simbolo:
+if not simbolo:
         print("- Adicione símbolos especiais (!@#$...)")
     print("-"*30)
 
 senhas = ["12345", "senha123", "Senha123!", "P@ssw0rd2025!"]
 for s in senhas:
-    verificar_senha(s)
+verificar_senha(s)
 
 
 import time
@@ -40,28 +40,28 @@ import re
 from IPython.display import clear_output
 
 eventos_suspeitos = [
-    r"falha de login",
-    r"senha incorreta",
-    r"acesso negado",
-    r"erro crítico"
+r"falha de login",
+ r"senha incorreta",
+r"acesso negado",
+ r"erro crítico"
 ]
 
 def verificar_evento(linha):
     return any(re.search(padrao, linha, re.IGNORECASE) for padrao in eventos_suspeitos)
 
 simulacao_log = [
-    "Usuario logado com sucesso",
-    "falha de login: usuario admin",
-    "Acesso negado para usuario teste",
-    "Operação concluída",
-    "erro crítico no sistema",
-    "Usuario logado com sucesso",
-    "senha incorreta: usuario teste"
+ "Usuario logado com sucesso",
+ "falha de login: usuario admin",
+"Acesso negado para usuario teste",
+"Operação concluída",
+ "erro crítico no sistema",
+ "Usuario logado com sucesso",
+  "senha incorreta: usuario teste"
 ]
 
-print("Monitoramento de logs iniciado... ⏳")
+print("Monitoramento de logs iniciado... ")
 for linha in simulacao_log:
-    clear_output(wait=True)
-    alerta = "⚠️ ALERTA" if verificar_evento(linha) else "INFO"
-    print(f"{alerta}: {linha}")
-    time.sleep(1)
+ clear_output(wait=True)
+alerta = " ALERTA" if verificar_evento(linha) else "INFO"
+print(f"{alerta}: {linha}")
+ time.sleep(1)
